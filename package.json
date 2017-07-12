@@ -4,7 +4,7 @@
     "description": "trade f2e project",
     "repository": {
         "type": "git",
-        "url": "git@github.com:future-team/gfs-fetch.git"
+        "url": "git@github.com:future-team/ea-fetch.git"
     },
     "author": {
         "name": "ainiderenxm",
@@ -80,9 +80,9 @@
         "prepublish": " npm run build"
     },
     "bugs": {
-        "url": "http://github.com/future-team/gfs-fetch/issues"
+        "url": "http://github.com/future-team/ea-fetch/issues"
     },
-    "homepage": "http://github.com/future-team/gfs-fetch",
+    "homepage": "http://github.com/future-team/ea-fetch",
     "main": "lib/",
     "license": "MIT"
 }
