@@ -4,7 +4,7 @@ import {Promise} from 'es6-promise';
 
 export interface FetchInter{
     mock?:any;
-    run(url:string,options?:any):any;
+    run(url:string,options?:any,isLoadingBar?:true):any;
 }
 
 export default class Fetch implements FetchInter{
@@ -57,6 +57,9 @@ export default class Fetch implements FetchInter{
 
     fetch(url:string,params:{},success:Function,error:Function,opts:AjaxPropsInter,isLoadingBar:true){
 
+        if(isLoadingBar == undefined){
+            isLoadingBar = true
+        }
         //todo 需要处理是否加载loadingbar的逻辑
 
         isLoadingBar && this.loadingBar.run(opts || {});
@@ -74,7 +77,7 @@ export default class Fetch implements FetchInter{
 
         url = this.mock.getUrl(url);
         if(this.mock.getDev&&this.mock.getDev() ){
-           opts.method = 'GET'; 
+           opts.method = 'GET';
         }
         return new Request().fetch(url,opts );
     }
@@ -90,10 +93,10 @@ export default class Fetch implements FetchInter{
         error:function(){},
         success:function(){},
         method:'GET'
-    } ):any{
+    },isLoadingBar:true):any{
 
         const _this = this;
-        return new Promise(function(resolve:any, reject:any, isLoadingBar:true) {
+        return new Promise(function(resolve:any, reject:any) {
 
             _this.fetch(url,options.body,(data,xhr)=>{
                 resolve(data,xhr);
